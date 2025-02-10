@@ -1,18 +1,55 @@
-import { Stack } from "expo-router";
+// import { Stack } from "expo-router";
+// import React from "react";
+
+// export default function RootLayout() {
+//   return (
+//     <Stack>
+//       {/* <Stack.Screen name="index" options={{ title: "Home" }} /> */}
+//       {/* <Stack.Screen name="index" options={{headerLeft: () => <></>, title: "Home" }}/> */}
+//       <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
+//       {/* <Stack.Screen name="about" options={{ title: "About" }} /> */}
+//       <Stack.Screen name="+not-found" />
+//     </Stack>
+//     /*Explicando: options={{headerLeft: () => <></>, title: "Home" }}
+//     -> Para que quando estiver na página Home não aparecer a seta para retorna a outra página
+//     */
+
+//   );
+// }
+
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 
-export default function RootLayout() {
+export default function TabLayout() {
   return (
-    <Stack>
-      {/* <Stack.Screen name="index" options={{ title: "Home" }} /> */}
-      {/* <Stack.Screen name="index" options={{headerLeft: () => <></>, title: "Home" }}/> */}
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
-      {/* <Stack.Screen name="about" options={{ title: "About" }} /> */}
-      <Stack.Screen name="+not-found" />
-    </Stack>
-    /*Explicando: options={{headerLeft: () => <></>, title: "Home" }}
-    -> Para que quando estiver na página Home não aparecer a seta para retorna a outra página
-    */
-
+    <Tabs screenOptions={{ tabBarActiveTintColor: "#FFD33D" }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "home-sharp" : "home-outline"}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: "About",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "information-circle" : "information-circle-outline"}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
