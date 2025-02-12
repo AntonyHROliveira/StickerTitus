@@ -14,8 +14,6 @@
 //   );
 // }
 
-
-
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
@@ -34,13 +32,8 @@
 // });
 //====================================================================//
 
-
-
-
-
 // import { View, StyleSheet } from "react-native";
 // import { Image } from "expo-image";
-
 
 // 2° Versão //
 //====================================================================//
@@ -53,7 +46,6 @@
 //   </View>
 
 // }
-
 
 // const styles = StyleSheet.create({
 //   container: {
@@ -73,14 +65,8 @@
 // });
 //====================================================================//
 
-
-
-
-
-
 // import { View, StyleSheet } from "react-native";
 // import ImageViewer from "@/components/ImageViewer";
-
 
 // 3° Versão //
 //====================================================================//
@@ -95,7 +81,6 @@
 //   );
 // }
 
-
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
@@ -106,19 +91,13 @@
 //   imageContainer:{
 //     flex: 1,
 //   },
-  
+
 // });
 //====================================================================//
-
-
-
-
-
 
 // import { View, StyleSheet } from "react-native";
 // import ImageViewer from "@/components/ImageViewer";
 // import Button from "@/components/Button";
-
 
 // 4° Versão //
 //====================================================================//
@@ -134,7 +113,6 @@
 //   );
 // }
 
-
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
@@ -145,20 +123,13 @@
 //   imageContainer:{
 //     flex: 1,
 //   },
-  
+
 // });
 //====================================================================//
-
-
-
-
-
-
 
 import { View, StyleSheet } from "react-native";
 import ImageViewer from "@/components/ImageViewer";
 import Button from "@/components/Button";
-
 
 // 5° Versão //
 //====================================================================//
@@ -167,16 +138,16 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={PlaceholderImage}/>
-        <View style={styles.footerConatiner}>
-          <Button label="Choose a photo"/>
-          <Button label="Use this photo"/>
-        </View>
+        <ImageViewer imgSource={PlaceholderImage} />
+      </View>
+      <View style={styles.footerConatiner}>
+        <Button label="Choose a photo" theme="primary" />{" "}
+        {/*theme="primary" <- PARA colocar um style proprio neste botão*/}
+        <Button label="Use this photo" />
       </View>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -185,14 +156,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#25292E",
   },
-  imageContainer:{
+  imageContainer: {
     flex: 1,
-    paddingTop:28,
+    paddingTop: 28,
   },
-  footerConatiner:{
-    flex:1/3,// <- para usar 33% da tela.
-    alignItems:"center",   
+  footerConatiner: {
+    flex: 1 / 3, // <- para usar 33% da tela.
+    alignItems: "center",
   },
-  
 });
 //====================================================================//
