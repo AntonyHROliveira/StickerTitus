@@ -21,21 +21,38 @@
 
 // << 2° Versão >> //
 //================//
-import { Tabs } from "expo-router";
-import React from "react";
+// import { Tabs } from "expo-router";
+// import React from "react";
 
-// Criando navegação do tipo bar (Tabs)
-export default function TabLayout() {
-  return (
-    <Tabs>
-      {/* <Tabs.Screen name="index" options={{ title: "Home" }} /> */}
-      <Tabs.Screen name="index" options={{ title: "Home" }}/>
-      <Tabs.Screen name="about" options={{ title: "AboutS" }}/>
+// // Criando navegação do tipo bar (Tabs)
+// export default function TabLayout() {
+//   return (
+//     <Tabs>
+//       {/* <Tabs.Screen name="index" options={{ title: "Home" }} /> */}
+//       <Tabs.Screen name="index" options={{ title: "Home" }}/>
+//       <Tabs.Screen name="about" options={{ title: "AboutS" }}/>
     
-    </Tabs>
-    /*Explicando: options={{headerLeft: () => <></>, title: "Home" }}
-    -> para que quando estiver na página Home não aparecer a seta para retorna a outra página
-    */
+//     </Tabs>
+//     /*Explicando: options={{headerLeft: () => <></>, title: "Home" }}
+//     -> para que quando estiver na página Home não aparecer a seta para retorna a outra página
+//     */
 
+//   );
+// }
+
+
+
+
+// << 3° Versão >> //
+//================//
+
+import { Stack } from "expo-router";
+
+export default function RootLayout() {
+  return (
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="+not-found" />
+    </Stack>
   );
 }
