@@ -127,21 +127,151 @@
 // });
 //====================================================================//
 
-import { View, StyleSheet } from "react-native";
-import ImageViewer from "@/components/ImageViewer";
-import Button from "@/components/Button";
+// import { View, StyleSheet } from "react-native";
+// import ImageViewer from "@/components/ImageViewer";
+// import Button from "@/components/Button";
 
 // 5° Versão //
 //====================================================================//
+// const PlaceholderImage = require("@/assets/images/image_dog.jpg");
+// export default function Index() {
+//   return (
+//     <View style={styles.container}>
+//       <View style={styles.imageContainer}>
+//         <ImageViewer imgSource={PlaceholderImage} />
+//       </View>
+//       <View style={styles.footerConatiner}>
+//         <Button label="Choose a photo" theme="primary" />{" "}
+//         {/*theme="primary" <- PARA colocar um style proprio neste botão*/}
+//         <Button label="Use this photo" />
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "#25292E",
+//   },
+//   imageContainer: {
+//     flex: 1,
+//     paddingTop: 28,
+//   },
+//   footerConatiner: {
+//     flex: 1 / 3, // <- para usar 33% da tela.
+//     alignItems: "center",
+//   },
+// });
+//====================================================================//
+
+
+
+// import { View, StyleSheet } from "react-native";
+// import ImageViewer from "@/components/ImageViewer";
+// import Button from "@/components/Button";
+// import * as ImagePicker from "expo-image-picker";
+
+// // 6° Versão //
+// //====================================================================//
+// const PlaceholderImage = require("@/assets/images/image_dog.jpg");
+
+
+// export default function Index() {
+//   const pickImageAsync = async () => {
+//     let result = await ImagePicker.launchImageLibraryAsync({
+//       mediaTypes:["images"],
+//       allowsEditing:true,
+//       quality:1,
+//     });
+
+//     if (!result.canceled) {
+//       console.log(result);
+//     }else{
+//       alert("You did not select any image.");
+//     }
+
+//   };
+
+  
+//   return (
+//     <View style={styles.container}>
+//       <View style={styles.imageContainer}>
+//         <ImageViewer imgSource={PlaceholderImage} />
+//       </View>
+//       <View style={styles.footerConatiner}>
+//         <Button label="Choose a photo" theme="primary" onPress={pickImageAsync} />
+//         {/*theme="primary" <- PARA colocar um style proprio neste botão*/}
+//         <Button label="Use this photo" />
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "#25292E",
+//   },
+//   imageContainer: {
+//     flex: 1,
+//     paddingTop: 28,
+//   },
+//   footerConatiner: {
+//     flex: 1 / 3, // <- para usar 33% da tela.
+//     alignItems: "center",
+//   },
+// });
+// //====================================================================//
+
+
+import { View, StyleSheet } from "react-native";
+import ImageViewer from "@/components/ImageViewer";
+import Button from "@/components/Button";
+import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+
+// 7° Versão //
+//====================================================================//
 const PlaceholderImage = require("@/assets/images/image_dog.jpg");
+
+
 export default function Index() {
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
+
+
+
+  const pickImageAsync = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes:["images"],
+      allowsEditing:true,
+      quality:1,
+    });
+
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    }else{
+      alert("You did not select any image.");
+    }
+
+  };
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={PlaceholderImage} />
+        <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
+        {/* selectedImage={selectedImage} 
+        selectedImage= =>  selectedImage?: string; da Prop da página ImageViewer.tsx
+        {selectedImage} =>  const [selectedImage, setSelectedImage] é o selectedImage da const dessa página.
+*/}
       </View>
       <View style={styles.footerConatiner}>
-        <Button label="Choose a photo" theme="primary" />{" "}
+        <Button label="Choose a photo" theme="primary" onPress={pickImageAsync} />
         {/*theme="primary" <- PARA colocar um style proprio neste botão*/}
         <Button label="Use this photo" />
       </View>
