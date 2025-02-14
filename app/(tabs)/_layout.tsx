@@ -1,6 +1,8 @@
 // import { Stack } from "expo-router";
 // import React from "react";
 
+// 1° Versão \\
+//=======================================================================================================\\
 // export default function RootLayout() {
 //   return (
 //     <Stack>
@@ -16,6 +18,7 @@
 
 //   );
 // }
+//=======================================================================================================\\
 
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
