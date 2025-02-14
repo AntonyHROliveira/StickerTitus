@@ -10,8 +10,8 @@ type Props = {
 export default function IconButton({icon, label, onPress}: Props) {
     return(
         <Pressable onPress={onPress} style={style.iconButton}>
-            <MaterialIcons name={icon} size={24} color="#FFF" style={style.IconButtonLabel} />
-            <Text style={style}>{label}</Text>
+            <MaterialIcons name={icon} size={24} color="#FFF"  />
+            <Text style={style.IconButtonLabel}>{label}</Text>
         </Pressable>
     );
 
