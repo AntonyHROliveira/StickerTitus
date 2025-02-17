@@ -230,7 +230,7 @@ export default function Button({ label, theme, onPress }: Props) {
       <View
         style={[
           styles.buttonContainer,
-          { borderWidth: 4, borderColor: "#FFD33D", borderRadius: 18 },
+          { borderWidth: 4, borderColor: "#FFD33D", borderRadius: 55 },
         ]}
       >
         <Pressable
@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     padding: 1,
   },
   button: {
-    borderRadius: 10,
+    borderRadius: 55,
     width: "100%",
     height: "100%",
     alignItems: "center",
