@@ -288,17 +288,6 @@
 // });
 // //====================================================================//
 
-
-
-
-
-
-
-
-
-
-
-
 // import { View, StyleSheet } from "react-native";
 // import ImageViewer from "@/components/ImageViewer";
 // import Button from "@/components/Button";
@@ -332,8 +321,6 @@
 //     }
 //   };
 
- 
-
 //   return (
 //     <View style={styles.container}>
 //       <View style={styles.imageContainer}>
@@ -341,7 +328,7 @@
 //           imgSource={PlaceholderImage}
 //           selectedImage={selectedImage}
 //         />
-//         {/* selectedImage={selectedImage} 
+//         {/* selectedImage={selectedImage}
 //         selectedImage= =>  selectedImage?: string; da Prop da página ImageViewer.tsx
 //         {selectedImage} =>  const [selectedImage, setSelectedImage] é o selectedImage da const dessa página.*/}
 //       </View>
@@ -396,10 +383,6 @@
 // });
 // //====================================================================//
 
-
-
-
-
 // import { View, StyleSheet } from "react-native";
 // import ImageViewer from "@/components/ImageViewer";
 // import Button from "@/components/Button";
@@ -417,7 +400,6 @@
 //     undefined
 //   );
 //   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
-  
 
 //   const pickImageAsync = async () => {
 //     let result = await ImagePicker.launchImageLibraryAsync({
@@ -445,7 +427,7 @@
 //           imgSource={PlaceholderImage}
 //           selectedImage={selectedImage}
 //         />
-//         {/* selectedImage={selectedImage} 
+//         {/* selectedImage={selectedImage}
 //         selectedImage= =>  selectedImage?: string; da Prop da página ImageViewer.tsx
 //         {selectedImage} =>  const [selectedImage, setSelectedImage] é o selectedImage da const dessa página.*/}
 //       </View>
@@ -500,40 +482,35 @@
 // });
 // //====================================================================//
 
-
-
-
-
-
-
-
-
-
 import { View, StyleSheet } from "react-native";
-import { useState } from "react";// <-  é um hook do React para gerenciar estados em componentes funcionais.
-import * as ImagePicker from "expo-image-picker";// <- é uma biblioteca do Expo que permite selecionar imagens da galeria ou câmera do dispositivo.
+import { useState } from "react"; // <-  é um hook do React para gerenciar estados em componentes funcionais.
+import * as ImagePicker from "expo-image-picker"; // <- é uma biblioteca do Expo que permite selecionar imagens da galeria ou câmera do dispositivo.
 import { type ImageSource } from "expo-image";
 
 // imports dos componentes personalizados localizados na pasta components do projeto.
-import ImageViewer from "@/components/ImageViewer";
 import Button from "@/components/Button";
-import IconButton from "@/components/IconButton";
 import CicleButton from "@/components/CicleButton";
 import EmojiPicker from "@/components/EmojiPicker";
 import EmojiList from "@/components/EmojiList";
+import EmojiSticker from "@/components/EmojiSticker";
+import ImageViewer from "@/components/ImageViewer";
+import IconButton from "@/components/IconButton";
 
 // 10° Versão //
 //====================================================================//
-const PlaceholderImage = require("@/assets/images/image_dog.jpg");// <- Carrega uma imagem local (image_dog.jpg) localizada na pasta assets/images
+const PlaceholderImage = require("@/assets/images/image_dog.jpg"); // <- Carrega uma imagem local (image_dog.jpg) localizada na pasta assets/images
 
 // export default function Index(){} => Define um componente funcional padrão exportado.
 // OBS: As const gerenciam os estados
 export default function Index() {
-  const [selectedImage, setSelectedImage] = useState<string | undefined>( undefined );
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  );
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const [pickedEmoji, setPickedEmoje] = useState<ImageSource | undefined>(undefined);
-  
+  const [pickedEmoji, setPickedEmoje] = useState<ImageSource | undefined>(
+    undefined
+  );
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -550,10 +527,16 @@ export default function Index() {
     }
   };
 
- const onReset = () => {setShowAppOptions(false)};
- const onAddSticker = () => {setIsModalVisible(true)};
- const onModalChose = () => {setIsModalVisible(false)};
- const onSaveImageAsync = () => {};
+  const onReset = () => {
+    setShowAppOptions(false);
+  };
+  const onAddSticker = () => {
+    setIsModalVisible(true);
+  };
+  const onModalChose = () => {
+    setIsModalVisible(false);
+  };
+  const onSaveImageAsync = () => {};
 
   return (
     <View style={styles.container}>
@@ -562,6 +545,9 @@ export default function Index() {
           imgSource={PlaceholderImage}
           selectedImage={selectedImage}
         />
+        {pickedEmoji && (
+          <EmojiSticker imageSize={40} stickerource={pickedEmoji} />
+        )}
         {/* selectedImage={selectedImage} 
         selectedImage= =>  selectedImage?: string; da Prop da página ImageViewer.tsx
         {selectedImage} =>  const [selectedImage, setSelectedImage] é o selectedImage da const dessa página.*/}
@@ -571,9 +557,13 @@ export default function Index() {
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
-            <IconButton icon="refresh" label="Reset" onPress={onReset}/>
+            <IconButton icon="refresh" label="Reset" onPress={onReset} />
             <CicleButton onPress={onAddSticker} />
-            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync}/>
+            <IconButton
+              icon="save-alt"
+              label="Save"
+              onPress={onSaveImageAsync}
+            />
           </View>
         </View>
       ) : (
@@ -584,12 +574,14 @@ export default function Index() {
             onPress={pickImageAsync}
           />
           {/*theme="primary" <- PARA colocar um style proprio neste botão*/}
-          <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
+          <Button
+            label="Use this photo"
+            onPress={() => setShowAppOptions(true)}
+          />
         </View>
       )}
       <EmojiPicker isVisible={isModalVisible} onClose={onModalChose}>
-        <EmojiList onSelect={setPickedEmoje} onCloseModal={onModalChose}/>
-
+        <EmojiList onSelect={setPickedEmoje} onCloseModal={onModalChose} />
       </EmojiPicker>
     </View>
   );
@@ -610,13 +602,13 @@ const styles = StyleSheet.create({
     flex: 1 / 3, // <- para usar 33% da tela.
     alignItems: "center",
   },
-  optionsContainer:{
-    position:"absolute",
-    bottom:80,
+  optionsContainer: {
+    position: "absolute",
+    bottom: 80,
   },
-  optionsRow:{
-    alignItems:"center",
-    flexDirection:"row",
+  optionsRow: {
+    alignItems: "center",
+    flexDirection: "row",
   },
 });
 //====================================================================//
