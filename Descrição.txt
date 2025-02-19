@@ -1,0 +1,2 @@
+iblioteca para gerenciar e salvar o printe de tela:
+Comando => npx expo install react-native-view-shot expo-media-library  

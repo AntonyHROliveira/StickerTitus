@@ -136,9 +136,9 @@ export default function EmojiSticker({ imageSize, stickerource }: Props) {
   });
 
   return (
-    <GestureDetector gesture={drag}>
+    <GestureDetector gesture={drag}>{/*gesture={drag} => tag responsavel por mudar a posição do emoji*/}
       <Animated.View style={[containerStyle, { top: -350 }]}>
-        <GestureDetector gesture={doubleTap}>
+        <GestureDetector gesture={doubleTap}> {/*gesture={doubleTap} => tag responsavel por aumentar o diminuir o tamanho do emoji*/}
           <Animated.Image
             source={stickerource}
             style={[imageStyle, { width: imageSize, height: imageSize }]} // <= [] coloca o style dentro de um vetor
