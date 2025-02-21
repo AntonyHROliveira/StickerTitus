@@ -912,10 +912,10 @@
 // });
 //====================================================================//
 
-import { View, StyleSheet, Platform } from "react-native";
 import { useState, useRef } from "react"; // <-  é um hook do React para gerenciar estados em componentes funcionais.
-import * as ImagePicker from "expo-image-picker"; // <- é uma biblioteca do Expo que permite selecionar imagens da galeria ou câmera do dispositivo.
+import { View, StyleSheet, Platform } from "react-native";
 import { type ImageSource } from "expo-image";
+import * as ImagePicker from "expo-image-picker"; // <- é uma biblioteca do Expo que permite selecionar imagens da galeria ou câmera do dispositivo.
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as MediaLibrary from "expo-media-library";
 import { captureRef } from "react-native-view-shot";
