@@ -89,10 +89,10 @@ import { Gesture, GestureDetector } from "react-native-gesture-handler"; // <= B
 
 type Props = {
   imageSize: number;
-  stickerource: ImageSource;
+  stickerSource: ImageSource;
 };
 
-export default function EmojiSticker({ imageSize, stickerource }: Props) {
+export default function EmojiSticker({ imageSize, stickerSource }: Props) {
   // (translateX & translatey) => para lidar com a posição do emoji
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
@@ -140,7 +140,7 @@ export default function EmojiSticker({ imageSize, stickerource }: Props) {
       <Animated.View style={[containerStyle, { top: -350 }]}>
         <GestureDetector gesture={doubleTap}> {/*gesture={doubleTap} => tag responsavel por aumentar o diminuir o tamanho do emoji*/}
           <Animated.Image
-            source={stickerource}
+            source={stickerSource}
             style={[imageStyle, { width: imageSize, height: imageSize }]} // <= [] coloca o style dentro de um vetor
             resizeMode="contain"
           />

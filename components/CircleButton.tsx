@@ -5,10 +5,10 @@ type Props ={
     onPress: () => void;
 };
 
-export default function CicleButton({onPress} : Props) {
+export default function CircleButton({onPress} : Props) {
     return(
         <View style={styles.circleButtonContainer}>
-        <Pressable onPress={onPress} style={styles.cicleButton}>
+        <Pressable onPress={onPress} style={styles.circleButton}>
             <MaterialIcons name="add" size={38} color="#25292E" />
         </Pressable>
     </View>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         borderRadius:42,
         padding:3,
     },
-    cicleButton:{
+    circleButton:{
         flex:1,
         justifyContent:"center",
         alignItems:"center",
